@@ -6,6 +6,10 @@ import { MenuOverlayItem } from '@ircsignpost/signpost-base/dist/src/menu-overla
 import {
   CategoryWithSections,
   ZendeskCategory,
+  getArticle,
+  getCategories,
+  getCategoriesWithSections,
+  getTranslationsFromDynamicContent,
 } from '@ircsignpost/signpost-base/dist/src/zendesk';
 import { GetStaticProps } from 'next';
 import getConfig from 'next/config';
@@ -38,13 +42,6 @@ import {
   populateMenuOverlayStrings,
 } from '../lib/translations';
 import { getZendeskMappedUrl, getZendeskUrl } from '../lib/url';
-// TODO Use real Zendesk API implementation.
-import {
-  getArticle,
-  getCategories,
-  getCategoriesWithSections,
-  getTranslationsFromDynamicContent,
-} from '../lib/zendesk-fake';
 
 interface Custom404Props {
   currentLocale: Locale;
@@ -53,7 +50,7 @@ interface Custom404Props {
   strings: Custom404Strings;
   // A list of |MenuOverlayItem|s to be displayed in the header and side menu.
   menuOverlayItems: MenuOverlayItem[];
-  footerLinks?: MenuOverlayItem[];
+  footerLinks: MenuOverlayItem[];
 }
 
 export default function Custom404({
@@ -132,12 +129,10 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     categories,
     !!aboutUsArticle
   );
-
   const footerLinks = getFooterItems(
     populateMenuOverlayStrings(dynamicContent),
     categories
   );
-
   return {
     props: {
       currentLocale,
