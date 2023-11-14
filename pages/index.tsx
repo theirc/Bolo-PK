@@ -119,7 +119,6 @@ const Home: NextPage<HomeProps> = ({
       }}
       headerLogoProps={getHeaderLogoProps(currentLocale)}
       searchBarIndex={SEARCH_BAR_INDEX}
-      serviceMapProps={serviceMapProps}
       aboutUsTextHtml={aboutUsTextHtml}
       categories={categories}
       newsSection={newsSection}
