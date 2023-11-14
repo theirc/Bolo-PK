@@ -121,7 +121,6 @@ const Home: NextPage<HomeProps> = ({
       searchBarIndex={SEARCH_BAR_INDEX}
       aboutUsTextHtml={aboutUsTextHtml}
       categories={categories}
-      newsSection={newsSection}
       footerLinks={footerLinks}
       signpostVersion={publicRuntimeConfig?.version}
       cookieBanner={
