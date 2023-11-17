@@ -13,20 +13,10 @@ import HomePage, {
 } from '@ircsignpost/signpost-base/dist/src/home-page';
 import { MenuOverlayItem } from '@ircsignpost/signpost-base/dist/src/menu-overlay';
 import { ServiceMapProps } from '@ircsignpost/signpost-base/dist/src/service-map';
-import {
-  fetchRegions,
-  fetchServices,
-  fetchServicesCategories,
-} from '@ircsignpost/signpost-base/dist/src/service-map-common';
-import {
-  Article,
-  Section,
-} from '@ircsignpost/signpost-base/dist/src/topic-with-articles';
+import { Section } from '@ircsignpost/signpost-base/dist/src/topic-with-articles';
 import {
   CategoryWithSections,
-  ZendeskArticle,
   ZendeskCategory,
-  ZendeskSection,
   getArticle,
   getArticlesForSection,
   getCategories,
@@ -34,7 +24,6 @@ import {
   getSection,
   getTranslationsFromDynamicContent,
 } from '@ircsignpost/signpost-base/dist/src/zendesk';
-import { sortBy } from 'cypress/types/lodash';
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 import getConfig from 'next/config';
@@ -43,7 +32,6 @@ import {
   ABOUT_US_ARTICLE_ID,
   CATEGORIES_TO_HIDE,
   CATEGORY_ICON_NAMES,
-  COUNTRY_ID,
   DIRECTUS_AUTH_TOKEN,
   DIRECTUS_COUNTRY_ID,
   DIRECTUS_INSTANCE,
