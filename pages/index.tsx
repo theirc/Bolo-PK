@@ -111,6 +111,7 @@ const Home: NextPage<HomeProps> = ({
       categories={categories}
       footerLinks={footerLinks}
       signpostVersion={publicRuntimeConfig?.version}
+      serviceMapProps={serviceMapProps}
       cookieBanner={
         <CookieBanner
           strings={strings.cookieBannerStrings}
@@ -231,6 +232,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         accessibility,
         showDirectus: true,
         currentLocale,
+        showMap: false,
       },
       categories,
       aboutUsTextHtml,
