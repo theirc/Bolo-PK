@@ -26,7 +26,6 @@ function Document() {
             src="https://static.zdassets.com/ekr/snippet.js?key=3ca3ab96-67f1-4a75-a4ab-8e206a0a4660"
             async
           >
-            {' '}
           </script>
         }
       </Head>
