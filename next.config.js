@@ -42,9 +42,9 @@ module.exports = withLess({
       // See full list of Ant styles here:
       // https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
       modifyVars: {
-        'primary-color': '#1C998B',
-        'secondary-color': '#1C998B',
-        'accent-color': '#1C998B',
+        'primary-color': '#bd3d32',
+        'secondary-color': '#bd3d32',
+        'accent-color': '#bd3d32',
         'info-color': '@accent-color',
         'alert-info-bg-color': '@accent-color',
         // Override Ant typography.
