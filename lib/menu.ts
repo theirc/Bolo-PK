@@ -45,20 +45,6 @@ export function getMenuItems(
     label: strings.services, // Make sure this string is defined in your strings object
     href: '/#service-map',
   });
-  items.push({
-    key: 'services',
-    label: strings.services, // Make sure this string is defined in your strings object
-    href: '/#service-map',
-  });
-  categories.forEach((category) => {
-    if ('id' in category && category.id === 1500000054622) {
-      items.push({
-        key: 'services',
-        label: category.name,
-        href: '/#service-map',
-      });
-    }
-  });
 
   if (USE_CAT_SEC_ART_CONTENT_STRUCTURE) {
     addMenuItemsCategories(items, categories as CategoryWithSections[]);
