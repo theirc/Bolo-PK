@@ -26,7 +26,7 @@ export const CATEGORY_ICON_NAMES: { [key: string]: string } = {
   '6513169936157': 'record_voice_over', // Afghan Refugees icon
   '360004968714': 'coronavirus', // Coronavirus icon
   '1500000054622': 'perm_device_information', // Services icon
-  '16388355451293': 'shield', // Human rights icon
+  '16388355451293': 'balance', // Human rights icon
 };
 
 // A mapping from section ID to a Material icon for that section.
