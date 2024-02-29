@@ -21,10 +21,8 @@ import {
   CategoryWithSections,
   ZendeskCategory,
   getArticle,
-  getArticlesForSection,
   getCategories,
   getCategoriesWithSections,
-  getSection,
   getTranslationsFromDynamicContent,
 } from '@ircsignpost/signpost-base/dist/src/zendesk';
 import type { NextPage } from 'next';
@@ -58,7 +56,6 @@ import { SocialMediaLinks, getSocialMediaProps } from '../lib/social-media';
 import {
   COMMON_DYNAMIC_CONTENT_PLACEHOLDERS,
   HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS,
-  getLastUpdatedLabel,
   getShareButtonStrings,
   populateHeaderBannerStrings,
   populateHomePageStrings,
@@ -78,7 +75,6 @@ interface HomeProps {
   // The HTML text of the About Us category shown on the home page.
   aboutUsTextHtml: string;
   categories: ZendeskCategory[] | CategoryWithSections[];
-  newsSection: Section;
   footerLinks?: MenuOverlayItem[];
 }
 
@@ -91,7 +87,6 @@ const Home: NextPage<HomeProps> = ({
   serviceMapProps,
   aboutUsTextHtml,
   categories,
-  newsSection,
   footerLinks,
 }) => {
   const { publicRuntimeConfig } = getConfig();
@@ -268,28 +263,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     directus
   );
 
-  const NEWS_ID = 13695147122077;
-  const zendeskUrl = getZendeskUrl();
-
-  const [newsSectionProps, newsArticles] = await Promise.all([
-    getSection(currentLocale, NEWS_ID, zendeskUrl),
-    getArticlesForSection(currentLocale, NEWS_ID, zendeskUrl),
-  ]);
-
-  const newsSection = {
-    id: newsSectionProps?.id,
-    name: newsSectionProps?.name,
-    articles: newsArticles.map((article) => ({
-      id: article.id,
-      title: article.title,
-      lastEdit: {
-        value: article.updated_at,
-        label: getLastUpdatedLabel(dynamicContent),
-        locale: currentLocale,
-      },
-    })),
-  };
-
   return {
     props: {
       currentLocale,
@@ -312,7 +285,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       },
       categories,
       aboutUsTextHtml,
-      newsSection,
       footerLinks,
     },
     revalidate: REVALIDATION_TIMEOUT_SECONDS,
