@@ -78,6 +78,7 @@ interface ServiceProps {
   menuOverlayItems: MenuOverlayItem[];
   footerLinks?: MenuOverlayItem[];
   service: DirectusArticle;
+  currentLocale: Locale;
 }
 
 export default function Service({
@@ -93,6 +94,7 @@ export default function Service({
   menuOverlayItems,
   footerLinks,
   service,
+  currentLocale,
 }: ServiceProps) {
   const router = useRouter();
   const { publicRuntimeConfig } = getConfig();
@@ -149,6 +151,7 @@ export default function Service({
           },
           disableShareButton: true,
           strings: strings.serviceContentStrings,
+          currentLocale,
         }}
       />
     </ServicePage>
@@ -277,7 +280,8 @@ export const getStaticProps: GetStaticProps = async ({
   if (
     !service ||
     !service.translations.length ||
-    service?.country !== DIRECTUS_COUNTRY_ID
+    service?.country !== DIRECTUS_COUNTRY_ID ||
+    service.status !== 'published'
   ) {
     const errorProps = await getErrorResponseProps(
       Number(params?.article),
@@ -380,6 +384,7 @@ export const getStaticProps: GetStaticProps = async ({
       menuOverlayItems,
       footerLinks,
       service,
+      currentLocale,
     },
     revalidate: REVALIDATION_TIMEOUT_SECONDS,
   };
