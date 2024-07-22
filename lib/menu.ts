@@ -17,6 +17,7 @@ export interface CustomMenuOverlayStrings extends MenuOverlayStrings {
   information: string;
   about: string;
   services: string;
+  downloadable_materials: string;
 }
 
 export function getFooterItems(
@@ -91,6 +92,26 @@ function addMenuItemsInformation(
     items.push({
       key: 'information',
       label: strings.information,
+      children: categories.map((category) => {
+        return {
+          key: category.id.toString(),
+          label: category.name,
+          href: '/categories/' + category.id.toString(),
+        };
+      }),
+    });
+  }
+}
+
+function addMenuItemsDownloadableMaterials(
+  items: MenuOverlayItem[],
+  strings: CustomMenuOverlayStrings,
+  categories: ZendeskCategory[]
+) {
+  if (categories.length > 0) {
+    items.push({
+      key: 'downloadable_materials',
+      label: strings.downloadable_materials,
       children: categories.map((category) => {
         return {
           key: category.id.toString(),
