@@ -17,6 +17,7 @@ export interface CustomMenuOverlayStrings extends MenuOverlayStrings {
   information: string;
   about: string;
   services: string;
+  downloadable_materials: string;
 }
 
 export function getFooterItems(
